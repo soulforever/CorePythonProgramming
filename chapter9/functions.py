@@ -6,6 +6,8 @@ Home work of chapter 9.
 """
 __author__ = 'guti'
 
+import os
+
 
 def note_ignore(filename):
     """
@@ -73,8 +75,6 @@ def change_grade(filename):
     :return: None
     """
 
-    import os
-
     def grade(score):
         assert 0 <= score <= 100
         if 90 <= score <= 100:
@@ -135,11 +135,44 @@ def read_config(filename):
 
 
 def family_finance():
-    # TODO use TK to solve
     pass
 
+
+def copy_file(file_a, file_b):
+    """
+    Problem 9-15, copy file
+    :param file_a: str
+    :param file_b: str
+    :return: None
+    """
+    with open(file_a) as fa, open(file_b, 'w') as fb:
+        for la in fa:
+            fb.write(la)
+
+
+def break_line(filename):
+    """
+    Problem 9-16, handle the line longer than 80
+    :param filename: str
+    :return: None
+    """
+    with open(filename, 'r+') as f, open('temp.txt', 'w+') as f_temp:
+        for line in f:
+            if len(line) > 80:
+                while len(line) > 80:
+                    point = line[:80].rfind(' ')
+                    f_temp.write(line[:point] + os.linesep)
+                    line = line[point:].lstrip()
+                f_temp.write(line)
+            else:
+                f_temp.write(line)
+        f.seek(0, 0)
+        f_temp.seek(0, 0)
+        for line in f_temp:
+            f.write(line)
+        os.remove('temp.txt')
 
 
 
 if __name__ == '__main__':
-    print compare_file('test.txt', 'test1.txt')
+    break_line('test_80_word.txt')
