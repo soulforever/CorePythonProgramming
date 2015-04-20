@@ -1,5 +1,0 @@
-math:A
-english:F
-computer:C
-data structure:D
-database:B
