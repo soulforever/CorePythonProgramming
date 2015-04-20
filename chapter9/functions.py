@@ -134,9 +134,11 @@ def read_config(filename):
     return c_dict
 
 
-def family_finace():
+def family_finance():
     # TODO use TK to solve
     pass
+
+
 
 
 if __name__ == '__main__':
