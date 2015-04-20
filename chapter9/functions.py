@@ -10,7 +10,7 @@ __author__ = 'guti'
 def note_ignore(filename):
     """
     Problem 9-1, ignore the note of a file
-    :param filename:
+    :param filename: str
     :return: None
     """
     f = open(filename)
