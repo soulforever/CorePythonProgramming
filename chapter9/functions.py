@@ -173,6 +173,50 @@ def break_line(filename):
         os.remove('temp.txt')
 
 
+def search_file(filename, byte):
+    """
+    Problem 9-18, search char in file
+    :param byte: int 0-255
+    :param filename: str
+    :return: int, times that char occur
+    """
+    char = chr(byte)
+    total = 0
+    with open(filename) as f:
+        for line in f:
+            total += line.count(char)
+    return total
+
+
+def create_file(byte, times, length):
+    """
+    Problem 9-19, create a file with random info
+    :param byte: int 0-255
+    :param times: int, times char(byte) occur
+    :param length: int, file length
+    :return: None
+    """
+    from random import randint, randrange
+    from time import time
+    pos_list = list()
+    for i in range(times):
+        pos = randrange(length)
+        if pos in pos_list:
+            continue
+        else:
+            pos_list.append(pos)
+    filename = 'random' + str(int(time())) + '.txt'
+    with open(filename, 'w') as f:
+        for i in range(length):
+            if i in pos_list:
+                f.write(chr(byte))
+            else:
+                r = randint(0, 255)
+                if r != byte:
+                    f.write(chr(r))
+                else:
+                    continue
+
 
 if __name__ == '__main__':
-    break_line('test_80_word.txt')
+    create_file(ord('a'), 5, 1755)
