@@ -1,0 +1,5 @@
+math:95
+english:55
+computer:70
+data structure:64
+database:87
