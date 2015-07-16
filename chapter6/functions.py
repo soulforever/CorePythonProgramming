@@ -471,4 +471,3 @@ def print_container(container, col=1, direct='row'):
 
 if __name__ == '__main__':
     print __doc__
-    print_container('')

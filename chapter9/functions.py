@@ -218,5 +218,83 @@ def create_file(byte, times, length):
                     continue
 
 
+def file_gzip(filename):
+    """
+    Problem= 9-20, create gzip a file
+    :param filename: str
+    :return: None
+    """
+    import gzip
+    with open(filename) as f_in, gzip.open(filename + '.gz', 'wb') as f_out:
+        f_out.writelines(f_in)
+        f_out.close()
+        f_in.close()
+
+
+def file_zip(filename, zippath, mode='OPEN'):
+    """
+    Problem= 9-21, using zipfile
+    :param filename: file name or path
+    :param zippath: zip path
+    :param mode: OPEN or ADD
+    :return:
+    """
+    import zipfile
+
+    def zip_open(file_name, zip_path):
+        f = zipfile.ZipFile(zip_path)
+        f.extract(file_name, os.path.dirname(zip_path))
+        f.close()
+
+    def zip_add(file_path, zip_path):
+        f = zipfile.ZipFile(zip_path, 'a')
+        f.write(file_path, os.path.basename(file_path), zipfile.ZIP_DEFLATED)
+        f.close()
+
+    def zip_create(file_path, zip_path):
+        f = zipfile.ZipFile(zip_path, 'w')
+        f.write(file_path, os.path.basename(file_path), zipfile.ZIP_DEFLATED)
+        f.close()
+
+    f_dict = {'OPEN': zip_open, 'ADD': zip_add, 'CREATE': zip_create}
+    f_dict[mode](filename, zippath)
+
+
+def ls_zip(filename):
+    """
+    Problem= 9-22, list the file of zip
+    :param filename: file name of zip
+    :return:
+    """
+    import zipfile
+    import datetime
+    zip_file = zipfile.ZipFile(filename)
+    for info in zip_file.infolist():
+        print '%-20s%-20s' % (info.filename, info.compress_size),
+        if info.file_size == 0:
+            print '%.2f%%' % 100,
+        else:
+            print '%.2f%%' % (float(info.compress_size) * 100 / info.file_size),
+        date_time = datetime.datetime(*info.date_time)
+        print date_time.strftime('%40c')
+
+
+def ls_tar(filename):
+    """
+    Problem= 9-23, list the file of tar
+    :param filename: file name of tar
+    :return:
+    """
+    import tarfile
+    import datetime
+    tar_file = tarfile.TarFile.open(filename, 'r:*')
+    for info in tar_file.getmembers():
+        # # can see the info details and tailor...
+        # print info.get_info(encoding='UTF-8', errors='strict')
+        info_dict = info.get_info(encoding='UTF-8', errors='strict')
+        print '%-80s%-20s%40s' % (info_dict['name'], info_dict['size'],
+                                  datetime.datetime.utcfromtimestamp(info_dict['mtime']).strftime('%40c'))
+
+
 if __name__ == '__main__':
-    create_file(ord('a'), 5, 1755)
+    print __doc__
