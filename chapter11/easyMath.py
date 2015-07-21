@@ -39,6 +39,7 @@ def gen_num(operator):
         num = randint(2, 10)
         return [num * randint(2, 10), num]
 
+
 def main():
     while True:
         doprob()
