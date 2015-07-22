@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
+
+"""
+Homework for chapter 13
+"""
+
 __author__ = 'guti'
 
 
 class MoneyFmt(object):
+    """
+    Problem 13-3, convert float to str
+    """
     def __init__(self, value=0.0):
         self.value = float(value)
 
