@@ -18,7 +18,7 @@ def mod_open(name, mode='r', buffering=-1):
     try:
         f = open(name, mode, buffering)
         return f
-    except Exception:
+    except IOError:
         return None
 
 

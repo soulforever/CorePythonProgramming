@@ -7,11 +7,12 @@ Homework for chapter 13
 __author__ = 'guti'
 
 
-class MoneyFmt(object):
+class MoneyFmt(float):
     """
     Problem 13-3, convert float to str
     """
     def __init__(self, value=0.0):
+        super(MoneyFmt, self).__init__()
         self.value = float(value)
 
     def update(self, value=None):
@@ -39,5 +40,6 @@ class MoneyFmt(object):
 
 
 if __name__ == '__main__':
-    mf = MoneyFmt(-23456789.8191)
-    print mf
+    a = MoneyFmt(23456789.8191)
+    b = MoneyFmt(121355.74543)
+    print a + b
