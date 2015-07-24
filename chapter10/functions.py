@@ -38,7 +38,7 @@ def mod_sqrt(x):
     """
     mod the sqrt function to make it support complex
     :param x: num, int or float
-    :return: num, float or complexs
+    :return: num, float or complex
     """
     import math
     import cmath

@@ -79,7 +79,7 @@ Choose the manage command:
                 print db
 
 
-def showmenu():
+def show_menu():
     prompt = '''
 (N)ew User
 (L)ogin
@@ -115,4 +115,4 @@ Enter choice:
 
 
 if __name__ == '__main__':
-    showmenu()
+    show_menu()

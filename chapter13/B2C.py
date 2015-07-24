@@ -14,7 +14,7 @@ class User(object):
     def __init__(self, name):
         self.name = name
         self.carts = dict()
-        self.add_cart(Cart('default'))
+        self.add_cart(Cart('default', {}))
 
     def add_cart(self, cart):
         if cart.name not in self.carts:
@@ -38,7 +38,7 @@ class Item(object):
 
 
 class Cart(object):
-    def __init__(self, name, data=dict()):
+    def __init__(self, name, data):
         self.name, self.data = name, data
 
     def __str__(self):

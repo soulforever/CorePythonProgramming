@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # # ********Stack test********
     # s = Stack([1, 2, 3, 4, 5, 6])
     # print s.peek(), s.isempty(), s.pop()
-    # s.push('haha')
+    # s.push('test')
     # print s[:2]
     # # ********Queue test********
     # q = Queue([1, 2, 3, 4, 5, 6])

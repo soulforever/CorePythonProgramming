@@ -30,7 +30,7 @@ def doprob():
 
 def gen_num(operator):
     if operator in '+-':
-        nums = [randint(1, 100) for i in range(2)]
+        nums = [randint(1, 100)] * 2
         nums.sort(reverse=True)
         return nums
     elif operator == '*':

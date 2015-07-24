@@ -42,4 +42,4 @@ class MoneyFmt(float):
 if __name__ == '__main__':
     a = MoneyFmt(23456789.8191)
     b = MoneyFmt(121355.74543)
-    print a + b
+    print a < b

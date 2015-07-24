@@ -14,8 +14,9 @@ class HideX(object):
     def __init__(self, x):
         self.x = x
 
+    @staticmethod
     @property
-    def f_property(self):
+    def x():
         def fget(self):
             return ~self.__x
 
@@ -26,4 +27,4 @@ class HideX(object):
 
 if __name__ == '__main__':
     h = HideX(8)
-    print h.f_property
+    print h.x

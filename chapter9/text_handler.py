@@ -52,6 +52,7 @@ def print_file_wrapper():
 
 
 def edit_file_wrapper():
+    # noinspection PyUnboundLocalVariable
     def edit_file(filename, temp, line_num, text):
         """
         Function for Problem 9-17 3),edit file
