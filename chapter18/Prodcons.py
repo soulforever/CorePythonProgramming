@@ -14,13 +14,12 @@ from MyThread import MyThread
 
 
 def write_queue(queue):
-    print 'producing object for queue...',
     queue.put('xxx', 1)
-    print 'size now:', queue.qsize()
+    print 'producing object for queue...size now:', queue.qsize()
 
 
 def read_queue(queue):
-    queue.get(1)
+    queue.get(1, timeout=5)
     print 'consumed object from queue...size now:', queue.qsize()
 
 
@@ -33,7 +32,7 @@ def writer(queue, loops):
 def reader(queue, loops):
     for i in range(loops):
         read_queue(queue)
-        sleep(randint(2, 4))
+        sleep(randint(2, 5))
 
 
 funcs = [reader, writer]
@@ -56,7 +55,6 @@ def main():
         threads[i].join()
 
     print 'ALL DONE!'
-
 
 if __name__ == '__main__':
     main()

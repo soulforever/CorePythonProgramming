@@ -25,16 +25,18 @@ def udp_server(host='', port=9087, buf=1024):
 def udp_client(host='localhost', port=9087, buf=1024):
     addr = (host, port)
     udp_client_socket = socket(AF_INET, SOCK_DGRAM)
-    while True:
-        data = raw_input('>>>')
-        if not data:
-            break
-        udp_client_socket.sendto(data, addr)
-        data, addr = udp_client_socket.recvfrom(buf)
-        if not data:
-            break
-        print data
-    udp_client_socket.close()
+    try:
+        while True:
+            data = raw_input('>>>')
+            if not data:
+                break
+            udp_client_socket.sendto(data, addr)
+            data, addr = udp_client_socket.recvfrom(buf)
+            if not data:
+                break
+            print data
+    except (EOFError, KeyboardInterrupt):
+        udp_client_socket.close()
 
 
 if __name__ == '__main__':
